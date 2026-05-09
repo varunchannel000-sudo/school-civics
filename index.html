@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -216,32 +215,17 @@
 </head>
 <body>
 
-<!-- LOADING OVERLAY -->
-<div id="loading-overlay" style="position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
-  <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--ink);">School <em style="color:var(--accent);">Civics</em></div>
-  <div style="display:flex;gap:8px;">
-    <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:bounce 1.2s ease-in-out infinite;"></div>
-    <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:bounce 1.2s ease-in-out .2s infinite;"></div>
-    <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:bounce 1.2s ease-in-out .4s infinite;"></div>
-  </div>
-  <div style="font-size:13px;color:var(--ink-light);">Connecting…</div>
-</div>
-<style>
-@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} }
-</style>
-
 <!-- LOGIN -->
 <div id="login-page">
   <div class="login-left">
     <div class="login-brand">
-      <div class="logo-mark">SC</div>
-      <h1>School<br><em>Civics</em></h1>
+      <div class="logo-mark">VK</div>
+      <h1>Varun<br><em>Krishnaswamy</em></h1>
       <p>Track tasks, schedule events, and collaborate — all in one focused space.</p>
     </div>
   </div>
   <div class="login-right">
     <h2>Welcome back</h2>
-    <p class="subtitle">Sign in to continue to School Civics</p>
     <div class="error-msg" id="error-msg">Incorrect username or password. Please try again.</div>
     <div class="form-group">
       <label>Username</label>
@@ -252,21 +236,6 @@
       <input type="password" id="password-input" placeholder="Enter your password" autocomplete="current-password">
     </div>
     <button class="btn-primary" onclick="doLogin()">Sign In →</button>
-    <div id="touchid-wrap" style="display:none; margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-        <div style="flex:1;height:1px;background:var(--border);"></div>
-        <span style="font-size:12px;color:var(--ink-light);letter-spacing:.06em;text-transform:uppercase;">or</span>
-        <div style="flex:1;height:1px;background:var(--border);"></div>
-      </div>
-      <button id="touchid-btn" onclick="doTouchID()" style="width:100%;padding:14px;background:var(--cream);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="10"/><path d="M12 8c-2.2 0-4 1.8-4 4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M12 13.5v3"/><path d="M9.5 17.5a4.5 4.5 0 0 0 5 0"/></svg>
-        Sign in with Touch ID
-      </button>
-      <div id="touchid-status" style="font-size:13px;text-align:center;margin-top:10px;min-height:18px;color:var(--ink-light);"></div>
-    </div>
-    <div style="text-align:center; margin-top:16px;">
-      <button onclick="showInternLogin()" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;">Applicant Sign In</button>
-    </div>
   </div>
 </div>
 
@@ -421,11 +390,11 @@
 </div>
 <div id="app-page">
   <div class="app-bar">
-    <div class="brand"><span>SC</span> School Civics</div>
+    <div class="brand"><span>VK</span> Varun Krishnaswamy</div>
     <div class="nav-tabs">
       <button class="nav-tab active" id="tab-todo" onclick="switchTab('todo',this)">☑ To-Do</button>
       <button class="nav-tab" id="tab-calendar" onclick="switchTab('calendar',this)">📅 Calendar</button>
-      <button class="nav-tab" id="tab-hiring" onclick="switchTab('hiring',this)" style="display:none">👥 Hiring</button>
+
     </div>
     <div class="user-pill">
       <div class="user-avatar-sm" id="nav-avatar"></div>
@@ -455,11 +424,6 @@
     <div class="empty-state" id="todo-empty" style="display:none">
       <div class="icon">🌿</div>
       <p id="todo-empty-msg">No tasks yet.</p>
-    </div>
-    <!-- Founder: assigned tasks section -->
-    <div id="assigned-section" style="display:none">
-      <div class="section-divider">Assigned to Members</div>
-      <div class="todo-list" id="assigned-list"></div>
     </div>
   </div>
 
@@ -494,15 +458,6 @@
           <div class="efg"><label>Event Title</label><input type="text" id="event-title" placeholder="e.g. Team standup"></div>
           <div class="efg"><label>Time</label><div class="time-row"><input type="time" id="event-start" value="09:00"><input type="time" id="event-end" value="10:00"></div></div>
           <div class="efg"><label>Description</label><textarea id="event-desc" placeholder="Optional notes…"></textarea></div>
-          <div class="efg" id="ev-assign-wrap">
-            <label>Assign to Member (optional)</label>
-            <select id="event-assign">
-              <option value="">— No assignment —</option>
-              <option value="naunidh">Naunidh Bhushan</option>
-              <option value="varun">Varun Krishnaswamy</option>
-              <option value="abhay">Abhay Krishnan</option>
-            </select>
-          </div>
           <button class="btn-add-event" onclick="addEvent()">+ Add Event</button>
         </div>
         <div class="events-list-box">
@@ -513,33 +468,6 @@
     </div>
   </div>
 
-  <!-- HIRING PAGE -->
-  <div class="page" id="page-hiring">
-    <div class="hiring-top">
-      <div class="page-header" style="margin-bottom:0">
-        <h2>Hiring</h2>
-        <p>Track applicants and manage your recruitment pipeline.</p>
-      </div>
-      <button class="btn-add" onclick="openApplicantModal()">+ Add Applicant</button>
-    </div>
-
-    <!-- Commitment Notifications -->
-    <div id="commitment-notifications" style="display:none; margin-bottom:28px;">
-      <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:12px;">🔔 Notifications</div>
-      <div id="notifications-list" style="display:flex;flex-direction:column;gap:10px;"></div>
-    </div>
-    <div class="stat-row" style="margin-bottom:28px;">
-      <div class="stat-chip sc-total">👥 <span id="h-total">0</span> total</div>
-      <div class="stat-chip sc-done">✅ <span id="h-acc">0</span> accepted</div>
-      <div class="stat-chip sc-left">❌ <span id="h-den">0</span> denied</div>
-      <div class="stat-chip sc-total">⏳ <span id="h-pend">0</span> pending</div>
-    </div>
-    <div id="hiring-list" style="display:flex;flex-direction:column;gap:12px;"></div>
-    <div class="empty-state" id="hiring-empty">
-      <div class="icon">🤝</div>
-      <p>No applicants yet. Press "Add Applicant" to get started.</p>
-    </div>
-  </div>
 </div>
 
 <!-- ASSIGN TASK MODAL -->
@@ -594,90 +522,16 @@
   </div>
 </div>
 
-<!-- APPLICANT MODAL -->
-<div class="modal-overlay" id="applicant-modal" onclick="if(event.target===this)closeApModal()">
-  <div class="modal-box" style="width:500px;">
-    <button class="modal-close" onclick="closeApModal()">×</button>
-    <div class="modal-tag" id="ap-modal-tag">New Applicant</div>
-    <div class="modal-title" style="font-size:22px;margin-bottom:22px;">Applicant Details</div>
-    <div class="efg"><label>Full Name</label><input type="text" id="ap-name" placeholder="e.g. Jordan Smith"></div>
-    <div class="efg"><label>Status</label>
-      <select id="ap-status">
-        <option value="Pending">⏳ Pending Review</option>
-        <option value="Accepted">✅ Accept</option>
-        <option value="Denied">❌ Deny</option>
-      </select>
-    </div>
-    <div class="efg"><label>Portal Email</label><input type="email" id="ap-email" placeholder="e.g. jordan@email.com"></div>
-    <div class="efg"><label>Portal Password</label><input type="text" id="ap-password" placeholder="Set a password for this applicant"></div>
-    <div class="efg"><label>Notes</label><textarea id="ap-notes" placeholder="Write any notes about this applicant…" style="height:90px;"></textarea></div>
-    <div class="modal-divider"></div>
-    <button class="btn-add-event" onclick="saveApplicant()">Save Applicant</button>
-  </div>
-</div>
 
 <script>
 // ─── USERS ───
 const USERS = {
-  'SC Founder': { pass: 'schoolcivics26', role: 'founder', name: 'SC Founder',           initials: 'SC' },
+  'vathukrishnaswamy': { pass: 'gray10Five', role: 'founder', name: 'Varun Krishnaswamy', initials: 'VK' },
   'naunidh':    { pass: 'nb_civics26',    role: 'member',  name: 'Naunidh Bhushan',       initials: 'NB' },
   'varun':      { pass: 'vk_civics26',    role: 'member',  name: 'Varun Krishnaswamy',    initials: 'VK' },
   'abhay':      { pass: 'ak_civics26',    role: 'member',  name: 'Abhay Krishnan',        initials: 'AK' },
 };
 const MEMBER_NAMES = { naunidh: 'Naunidh Bhushan', varun: 'Varun Krishnaswamy', abhay: 'Abhay Krishnan' };
-
-// ─── GLOBAL STORAGE via GitHub Gist ───
-// Uses a GitHub Gist as a simple free database. Works across all devices.
-// The Gist ID is stored after first creation so everyone shares the same data.
-const GIST_TOKEN  = '';          // Leave blank — uses public anonymous gists
-const GIST_ID_KEY = 'sc_gist_id';
-// !! ACTION REQUIRED: After deploying, the founder must visit the site once
-// to create the Gist, then share the Gist ID in the URL or hard-code it below.
-// OR: Use the hard-coded Gist ID once created (paste it between the quotes):
-const HARDCODED_GIST_ID = '';   // e.g. 'a1b2c3d4e5f6...' — fill in after first run
-
-const GIST_FILENAME = 'sc_data.json';
-
-async function gistSave(data) {
-  const id = HARDCODED_GIST_ID || localStorage.getItem(GIST_ID_KEY);
-  const body = JSON.stringify({ files: { [GIST_FILENAME]: { content: JSON.stringify(data) } } });
-  try {
-    if (!id) {
-      // Create new public gist
-      const r = await fetch('https://api.github.com/gists', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
-        body: JSON.stringify({ description: 'School Civics App Data', public: true,
-          files: { [GIST_FILENAME]: { content: JSON.stringify(data) } } })
-      });
-      if (r.ok) {
-        const j = await r.json();
-        localStorage.setItem(GIST_ID_KEY, j.id);
-        console.log('Gist created:', j.id, '— save this ID as HARDCODED_GIST_ID');
-      }
-    } else {
-      await fetch(`https://api.github.com/gists/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
-        body
-      });
-    }
-  } catch(e) { console.warn('Gist save failed', e); }
-}
-
-async function gistLoad() {
-  const id = HARDCODED_GIST_ID || localStorage.getItem(GIST_ID_KEY);
-  if (!id) return null;
-  try {
-    const r = await fetch(`https://api.github.com/gists/${id}`, {
-      headers: { 'Accept': 'application/vnd.github+json' }
-    });
-    if (!r.ok) return null;
-    const j = await r.json();
-    const content = j.files?.[GIST_FILENAME]?.content;
-    return content ? JSON.parse(content) : null;
-  } catch(e) { return null; }
-}
 
 // ─── SHARED STATE ───
 let todos      = [];
@@ -689,47 +543,23 @@ let assigningTodoId  = null;
 let editingApId      = null;
 
 // ─── PERSISTENCE ───
-async function save() {
+function save() {
   try {
     localStorage.setItem('sc_todos',      JSON.stringify(todos));
     localStorage.setItem('sc_events',     JSON.stringify(events));
     localStorage.setItem('sc_applicants', JSON.stringify(applicants));
-  } catch(e) {}
-  await gistSave({ todos, events, applicants, updatedAt: Date.now() });
+  } catch(e) { console.warn('Storage save failed', e); }
 }
-
-async function loadData() {
-  // Load local cache instantly
+function loadData() {
   try {
     todos      = JSON.parse(localStorage.getItem('sc_todos'))      || [];
     events     = JSON.parse(localStorage.getItem('sc_events'))     || {};
     applicants = JSON.parse(localStorage.getItem('sc_applicants')) || [];
-  } catch(e) { todos = []; events = {}; applicants = []; }
-
-  // Override with cloud data
-  const cloud = await gistLoad();
-  if (cloud) {
-    todos      = cloud.todos      || [];
-    events     = cloud.events     || {};
-    applicants = cloud.applicants || [];
-    try {
-      localStorage.setItem('sc_todos',      JSON.stringify(todos));
-      localStorage.setItem('sc_events',     JSON.stringify(events));
-      localStorage.setItem('sc_applicants', JSON.stringify(applicants));
-    } catch(e) {}
+  } catch(e) {
+    todos = []; events = {}; applicants = [];
   }
 }
-
-// Boot sequence
-(async () => {
-  showLoadingOverlay(true);
-  await loadData();
-  showLoadingOverlay(false);
-})();
-
-function showLoadingOverlay(show) {
-  document.getElementById('loading-overlay').style.display = show ? 'flex' : 'none';
-}
+loadData();
 
 // ─── AUTH ───
 function hideAllPages() {
@@ -760,106 +590,6 @@ function doLogin() {
   }
 }
 
-// ─── TOUCH ID (WebAuthn) — SC Founder only ───
-const TOUCH_ID_CRED_KEY = 'sc_touchid_credId';
-const TOUCH_ID_RP_ID    = location.hostname; // always matches the actual domain
-const TOUCH_ID_USER_ID  = new Uint8Array([83,67,70,111,117,110,100,101,114]); // "SCFounder"
-
-async function checkTouchIDSupport() {
-  // Only works on HTTPS (or localhost)
-  if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
-  if (!window.PublicKeyCredential) return;
-  // Show the button immediately — then check if platform authenticator is available
-  document.getElementById('touchid-wrap').style.display = 'block';
-  const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable().catch(()=>false);
-  if (!available) {
-    // Still show but explain
-    document.getElementById('touchid-status').textContent = 'Touch ID not available on this device.';
-  }
-}
-checkTouchIDSupport();
-
-async function doTouchID() {
-  const statusEl = document.getElementById('touchid-status');
-  const btn      = document.getElementById('touchid-btn');
-  const storedId = localStorage.getItem(TOUCH_ID_CRED_KEY);
-
-  btn.style.opacity = '0.6';
-  btn.style.pointerEvents = 'none';
-  statusEl.style.color = 'var(--ink-light)';
-  statusEl.textContent = storedId ? 'Waiting for Touch ID…' : 'Registering Touch ID…';
-
-  try {
-    if (!storedId) {
-      // First time: register a passkey for SC Founder
-      const regOptions = {
-        challenge: crypto.getRandomValues(new Uint8Array(32)),
-        rp: { id: TOUCH_ID_RP_ID, name: 'School Civics' },
-        user: { id: TOUCH_ID_USER_ID, name: 'SC Founder', displayName: 'SC Founder' },
-        pubKeyCredParams: [
-          { type: 'public-key', alg: -7 },   // ES256
-          { type: 'public-key', alg: -257 }  // RS256
-        ],
-        authenticatorSelection: {
-          authenticatorAttachment: 'platform',
-          userVerification: 'required',
-          residentKey: 'preferred'
-        },
-        timeout: 60000
-      };
-      const cred = await navigator.credentials.create({ publicKey: regOptions });
-      const credIdB64 = btoa(String.fromCharCode(...new Uint8Array(cred.rawId)));
-      localStorage.setItem(TOUCH_ID_CRED_KEY, credIdB64);
-      statusEl.style.color = 'var(--sage)';
-      statusEl.textContent = '✓ Touch ID set up! Signing you in…';
-      setTimeout(() => loginAsFounder(), 700);
-    } else {
-      // Already registered: authenticate
-      const rawCredId = Uint8Array.from(atob(storedId), c => c.charCodeAt(0));
-      const authOptions = {
-        challenge: crypto.getRandomValues(new Uint8Array(32)),
-        rpId: TOUCH_ID_RP_ID,
-        allowCredentials: [{ type: 'public-key', id: rawCredId, transports: ['internal'] }],
-        userVerification: 'required',
-        timeout: 60000
-      };
-      await navigator.credentials.get({ publicKey: authOptions });
-      statusEl.style.color = 'var(--sage)';
-      statusEl.textContent = '✓ Verified!';
-      setTimeout(() => loginAsFounder(), 500);
-    }
-  } catch(err) {
-    btn.style.opacity = '';
-    btn.style.pointerEvents = '';
-    if (err.name === 'NotAllowedError') {
-      statusEl.style.color = '#C0392B';
-      statusEl.textContent = 'Touch ID cancelled or timed out. Try again.';
-    } else if (err.name === 'InvalidStateError') {
-      localStorage.removeItem(TOUCH_ID_CRED_KEY);
-      statusEl.style.color = '#C0392B';
-      statusEl.textContent = 'Credential reset — tap again to re-register.';
-    } else if (err.name === 'NotSupportedError') {
-      statusEl.style.color = '#C0392B';
-      statusEl.textContent = 'Touch ID not supported on this browser/device.';
-    } else {
-      statusEl.style.color = '#C0392B';
-      statusEl.textContent = 'Error: ' + err.message;
-    }
-  }
-}
-
-function loginAsFounder() {
-  currentUser = { username: 'SC Founder', ...USERS['SC Founder'] };
-  document.getElementById('error-msg').classList.remove('show');
-  hideAllPages();
-  document.getElementById('login-page').style.display = 'none';
-  document.getElementById('app-page').style.display = 'block';
-  document.getElementById('touchid-status').textContent = '';
-  document.getElementById('touchid-btn').style.opacity = '';
-  document.getElementById('touchid-btn').style.pointerEvents = '';
-  setupUI(); setGreeting(); renderTodos(); renderCalendar();
-}
-
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && document.getElementById('login-page').style.display !== 'none') doLogin();
   if (e.key === 'Escape') { closeAssignModal(); closeEvModal(); closeApModal(); closeAllMenus(); }
@@ -879,7 +609,6 @@ function setupUI() {
   const isFounder = currentUser.role === 'founder';
   document.getElementById('nav-avatar').textContent = currentUser.initials;
   document.getElementById('nav-name').textContent   = currentUser.name;
-  document.getElementById('tab-hiring').style.display  = isFounder ? '' : 'none';
   document.getElementById('todo-add-wrap').style.display = isFounder ? '' : 'none';
   document.getElementById('ev-add-panel').style.display  = isFounder ? '' : 'none';
 }
@@ -890,7 +619,6 @@ function switchTab(tab, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   if (btn) btn.classList.add('active');
   document.getElementById('page-' + tab).classList.add('active');
-  if (tab === 'hiring') loadNotifications();
 }
 
 function setGreeting() {
@@ -1271,16 +999,14 @@ function showMainLogin() {
   document.getElementById('intern-login-page').style.display = 'none';
   document.getElementById('login-page').style.display = 'flex';
 }
-async function doInternLogin() {
+function doInternLogin() {
   const email = document.getElementById('intern-email-input').value.trim().toLowerCase();
   const pass  = document.getElementById('intern-password-input').value;
-  const cloud = await gistLoad();
-  const data  = (cloud && cloud.applicants) ? cloud.applicants : applicants;
-  const ap = data.find(a => a.email && a.email.trim().toLowerCase() === email && a.password === pass);
+  const data  = JSON.parse(localStorage.getItem('sc_applicants') || '[]');
+  const ap    = data.find(a => a.email && a.email.toLowerCase() === email && a.password === pass);
   if (ap) {
     currentIntern = ap;
     document.getElementById('intern-login-page').style.display = 'none';
-    document.getElementById('intern-error-msg').classList.remove('show');
     showInternPortal();
   } else {
     document.getElementById('intern-error-msg').classList.add('show');
@@ -1316,19 +1042,11 @@ function backToPortal() {
 }
 
 // ─── STATUS LETTER ───
-async function showStatusLetter() {
+function showStatusLetter() {
   document.getElementById('intern-portal-page').style.display = 'none';
   const lp = document.getElementById('status-letter-page');
   lp.style.display = 'block';
-  // Always fetch freshest status from cloud
-  let freshAp = currentIntern;
-  try {
-    const cloud = await gistLoad();
-    const data  = (cloud && cloud.applicants) ? cloud.applicants : applicants;
-    const updated = data.find(a => a.email && currentIntern.email && a.email.toLowerCase() === currentIntern.email.toLowerCase());
-    if (updated) { currentIntern = updated; freshAp = updated; }
-  } catch(e) {}
-  const ap = freshAp;
+  const ap = currentIntern;
   const today = new Date();
   const dateStr = today.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
   const firstName = ap.name.split(' ')[0];
@@ -1574,7 +1292,7 @@ function loadNotifications() {
         <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">✅ ${esc(n.name)} commitment form completed</div>
         <div style="font-size:12px;color:var(--ink-light);">${date} · ${esc(n.email)}</div>
       </div>
-      <button onclick="openReviewModal(${n.id})" style="padding:9px 18px;background:var(--sage);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='#6a8e76'" onmouseout="this.style.background='var(--sage)'">🔍 Review and Accept</button>
+      <button onclick="sendCommitmentEmail('${esc(n.name)}','${esc(n.email)}')" style="padding:9px 18px;background:var(--ink);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='#2E251E'" onmouseout="this.style.background='var(--ink)'">📧 Send Email to Sender</button>
       <button onclick="dismissNotification(${n.id})" style="padding:9px 12px;background:transparent;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-light);cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='#C0392B';this.style.color='#C0392B'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink-light)'">Dismiss</button>
     `;
     list.appendChild(div);
@@ -1585,29 +1303,6 @@ function dismissNotification(id) {
   notifications = notifications.filter(n => n.id !== id);
   localStorage.setItem('sc_notifications', JSON.stringify(notifications));
   loadNotifications();
-}
-
-// ─── REVIEW MODAL ───
-function openReviewModal(id) {
-  const notifications = JSON.parse(localStorage.getItem('sc_notifications') || '[]');
-  const n = notifications.find(x => x.id === id);
-  if (!n) return;
-
-  const date = new Date(n.timestamp).toLocaleDateString('en-US', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-    hour: '2-digit', minute: '2-digit'
-  });
-
-  const modal = document.getElementById('review-modal');
-  document.getElementById('rm-name').textContent    = n.name;
-  document.getElementById('rm-email').textContent   = n.email;
-  document.getElementById('rm-date').textContent    = date;
-  document.getElementById('rm-initials').textContent = (n.firstName?.[0]||'') + (n.lastName?.[0]||'');
-  document.getElementById('rm-accept-btn').onclick  = () => { closeReviewModal(); sendCommitmentEmail(n.name, n.email); dismissNotification(id); };
-  modal.classList.add('open');
-}
-function closeReviewModal() {
-  document.getElementById('review-modal').classList.remove('open');
 }
 
 function sendCommitmentEmail(name, email) {
@@ -1642,51 +1337,5 @@ Founder & Director, School Civics Program`
   window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 </script>
-
-<!-- REVIEW MODAL -->
-<div class="modal-overlay" id="review-modal" onclick="if(event.target===this)closeReviewModal()" style="z-index:1000;">
-  <div class="modal-box" style="width:520px; max-width:92vw;">
-    <button class="modal-close" onclick="closeReviewModal()">×</button>
-
-    <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
-      <div id="rm-initials" style="width:52px;height:52px;border-radius:50%;background:var(--sage-pale);color:var(--sage);font-family:'Playfair Display',serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;"></div>
-      <div>
-        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:4px;">Commitment Form Submission</div>
-        <div id="rm-name" style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);"></div>
-      </div>
-    </div>
-
-    <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:20px;display:flex;flex-direction:column;gap:14px;">
-      <div style="display:flex;gap:12px;align-items:center;">
-        <div style="width:32px;height:32px;background:var(--warm-white);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📧</div>
-        <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:2px;">Email Address</div>
-          <div id="rm-email" style="font-size:15px;color:var(--ink);"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;">
-        <div style="width:32px;height:32px;background:var(--warm-white);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🕐</div>
-        <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:2px;">Submitted</div>
-          <div id="rm-date" style="font-size:15px;color:var(--ink);"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:32px;height:32px;background:var(--warm-white);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">✅</div>
-        <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:2px;">Terms of Agreement</div>
-          <div style="font-size:15px;color:var(--sage);font-weight:500;">All 6 terms agreed to</div>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-bottom:20px;">Pressing <strong>Accept</strong> will open a pre-drafted welcome email to this applicant containing their portal login credentials. You can review and send it at your discretion.</p>
-
-    <div class="modal-divider"></div>
-    <div style="display:flex;gap:10px;margin-top:4px;">
-      <button onclick="closeReviewModal()" style="flex:1;padding:13px;background:transparent;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--ink-muted);cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--ink-muted)'" onmouseout="this.style.borderColor='var(--border)'">Cancel</button>
-      <button id="rm-accept-btn" style="flex:2;padding:13px;background:var(--sage);color:white;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='#6a8e76'" onmouseout="this.style.background='var(--sage)'">✅ Accept & Send Welcome Email</button>
-    </div>
-  </div>
-</div>
-</body></html>
+</body>
+</html>
